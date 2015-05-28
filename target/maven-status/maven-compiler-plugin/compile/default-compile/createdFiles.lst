@@ -1,0 +1,4 @@
+fr/treeptik/tpstruts/action/RegisterAction.class
+fr/treeptik/tpstruts/interceptors/LoginInterceptor.class
+fr/treeptik/tpstruts/model/Personne.class
+fr/treeptik/tpstruts/action/LoginAction.class

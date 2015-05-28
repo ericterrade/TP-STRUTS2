@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- la page maître -->
+	<definition name="masterPage" template="/MasterPage.jsp">
+		<put-attribute name="entete" value="/Entete.jsp" />
+		<put-attribute name="titre" value="Pam" />
+		<put-attribute name="saisie" value="" />
+		<put-attribute name="simulation" value="" />
+		<put-attribute name="simulations" value="" />
+		<put-attribute name="exception" value="" />
+		<put-attribute name="erreur" value="" />
+	</definition>
+
+	<!-- la vue saisie -->
+	<definition name="saisie" extends="masterPage">
+		<put-attribute name="saisie" value="/Saisie.jsp" />
+	</definition>
+
+	<!-- la vue simulation -->
+	<definition name="simulation" extends="saisie">
+		<put-attribute name="simulation" value="/Simulation.jsp" />
+	</definition>
+
+	<!-- la vue simulations -->
+	<definition name="simulations" extends="masterPage">
+		<put-attribute name="simulations" value="/Simulations.jsp" />
+	</definition>
+
+	<!-- la vue exception -->
+	<definition name="exception" extends="masterPage">
+		<put-attribute name="exception" value="/Exception.jsp" />
+	</definition>
+
+	<!-- la vue erreur -->
+	<definition name="erreur" extends="masterPage">
+		<put-attribute name="erreur" value="/Erreur.jsp" />
+	</definition>
+</tiles-definitions>

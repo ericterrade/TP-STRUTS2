@@ -1,0 +1,70 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.3//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+	<field name="personne.nom">
+		<field-validator type="requiredstring">
+			<message>Le Nom est requis</message>
+		</field-validator>
+	</field>
+	<field name="personne.prenom">
+		<field-validator type="requiredstring">
+			<message>Le Prénom est requis</message>
+		</field-validator>
+	</field>
+	<field name="personne.age">
+		<field-validator type="int">
+			<param name="min">18</param>
+			<param name="max">65</param>
+			<message>L'age doit être compris entre ${min} et
+				${max}
+			</message>
+		</field-validator>
+
+	</field>
+
+	<field name="personne.email">
+		<field-validator type="requiredstring">
+			<message>L'email est requis</message>
+		</field-validator>
+		<field-validator type="email">
+			<message>L'email n'est pas valide</message>
+		</field-validator>
+	</field>
+
+	<field name="personne.username">
+		<field-validator type="requiredstring">
+			<message>L'Username est requis</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">12</param>
+			<param name="minLength">6</param>
+			<message>L'username doit contenir entre ${minLength} et
+				${maxLength}
+				caractères
+			</message>
+		</field-validator>
+
+	</field>
+
+	<field name="personne.password">
+		<field-validator type="requiredstring">
+			<message>Le Password est requis</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">12</param>
+			<param name="minLength">6</param>
+			<message>Le Password doit contenir entre ${minLength} et
+				${maxLength}
+				caractères
+			</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regexExpression">^(?=.*\d)(?=.*\w)(?=[^*@#!_])(?!.*[;])(?=.*[a-z])(?=.*[A-Z]).{6,12}$</param>
+					<message>le password doit contenir au moins une majuscule, un chiffre et un caractère spécial (sauf ;).</message>
+		</field-validator>
+
+	</field>
+
+</validators>
+       
