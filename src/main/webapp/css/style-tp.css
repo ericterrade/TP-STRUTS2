@@ -1,0 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Merienda+One);
+
+.struts2 {
+	font-family: "Merienda One", arial;
+	color: red;
+	font-size: 2em;
+	text-shadow: 2px 2px #ddd;
+
+}

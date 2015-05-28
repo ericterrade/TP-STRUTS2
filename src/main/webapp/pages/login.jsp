@@ -3,15 +3,16 @@
 <%@ include file="JspHeader.jsp"%>
 <body>
 	<div id="wrapper">
-
+		<!-- Navigation -->
+		<%@ include file="JspNav.jsp" %>
 		<div id="page-wrapper">
 			<div class="row">
 				<div class=".col-md-4"></div>
 				<div class=".col-md-4">
-					<h1 class="page-header">S'identifier</h1>
+					<h1 class="page-header"><s:property value="%{getText('login.head.title')}"/></h1>
 
 					<s:form action="login">
-						<s:actionerror />
+						<s:actionerror value="%{getText('login.error')}"/>
 						<div class="form-group">
 							<s:textfield name="personne.username" label="username"
 								class="form-control" />

@@ -7,6 +7,8 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -14,10 +16,12 @@ import fr.treeptik.tpstruts.exception.ServiceException;
 import fr.treeptik.tpstruts.model.Personne;
 import fr.treeptik.tpstruts.service.PersonneService;
 
+@Controller
 public class LoginAction extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
-	private PersonneService personneService = new PersonneService();
+	@Autowired
+	private PersonneService personneService;
 
 	private Personne personne;
 
@@ -56,11 +60,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	}
 
 	@SkipValidation
-	@Action(value = "/login", results = @Result(name = "success", location = "/pages/login-success.jsp"))
-	public String getLoginSuccess() throws InstantiationException, IllegalAccessException, ServiceException {
-		Personne goodPersonne = personneService.find(personne);
+	@Action(value = "/login", results = {
+			@Result(name = "success", location = "/pages/login-success.jsp"),
+			@Result(name = "error", location = "/pages/login.jsp") })
+	public String getLoginSuccess() throws InstantiationException,
+			IllegalAccessException, ServiceException {
+		Personne goodPersonne = personneService.identifier(personne);
 		if (goodPersonne != null) {
-			session.put("USER", personne);
+			session.put("USER", goodPersonne.getUsername());
 			addActionMessage("Vous avez bien été identifié ! "
 					+ personne.getUsername());
 			return SUCCESS;

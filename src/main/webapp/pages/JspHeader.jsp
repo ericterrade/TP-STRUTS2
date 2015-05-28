@@ -19,6 +19,8 @@
 
     <!-- Custom Fonts -->
     <link href="<%= request.getContextPath() %>/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+     <link href="<%= request.getContextPath() %>/css/style-tp.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 .label{
 color:#000;

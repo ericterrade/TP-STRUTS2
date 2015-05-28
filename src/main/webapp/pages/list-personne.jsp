@@ -27,6 +27,7 @@
 									id="dataTables-example">
 									<thead>
 										<tr>
+										<th><s:property value="#" /></th>
 											<th><s:property value="%{getText('personne.nom.label')}" /></th>
 											<th><s:property value="%{getText('personne.prenom.label')}" /></th>
 											<th><s:property value="%{getText('personne.age.label')}" /></th>
@@ -38,6 +39,7 @@
 									<tbody>
 										<s:iterator value="personnes">
 											<tr>
+												<td><s:property value="id" /></td>
 												<td><s:property value="nom" /></td>
 												<td><s:property value="prenom" /></td>
 												<td><s:property value="age" /></td>

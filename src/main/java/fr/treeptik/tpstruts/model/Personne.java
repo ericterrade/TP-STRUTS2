@@ -2,9 +2,18 @@ package fr.treeptik.tpstruts.model;
 
 import java.io.Serializable;
 
-public class Personne implements Serializable{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Personne implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue
+	private Integer id;
 
 	private String nom;
 	private String prenom;
@@ -12,20 +21,29 @@ public class Personne implements Serializable{
 	private String email;
 	private String username;
 	private String password;
-	
+
 	public Personne() {
 
 	}
 
-	public Personne(String nom, String prenom, Integer age, String email,
-			String username, String password) {
+	public Personne(Integer id, String nom, String prenom, Integer age,
+			String email, String username, String password) {
 		super();
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
 		this.email = email;
 		this.username = username;
 		this.password = password;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -82,6 +100,7 @@ public class Personne implements Serializable{
 		int result = 1;
 		result = prime * result + ((age == null) ? 0 : age.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
@@ -110,6 +129,11 @@ public class Personne implements Serializable{
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (nom == null) {
 			if (other.nom != null)
 				return false;
@@ -135,13 +159,11 @@ public class Personne implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Personne [nom=" + nom + ", prenom=" + prenom + ", age=" + age
-				+ ", email=" + email + ", username=" + username + ", password="
-				+ password + "]";
+		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom
+				+ ", age=" + age + ", email=" + email + ", username="
+				+ username + ", password=" + password + "]";
 	}
-	
-	
 
 	
-	
+
 }

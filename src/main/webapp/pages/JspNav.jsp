@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">TP STRUTS 2</a>
+                <a class="navbar-brand" href="index">TP STRUTS <span class="struts2">2</span></a>
             </div>
             <!-- /.navbar-header -->
 
