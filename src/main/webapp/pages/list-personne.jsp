@@ -65,6 +65,15 @@
 														onclick="location.href='<s:property value="#urlRemove"/>'">
 														<i class="fa fa-times"></i>
 													</button>
+													<s:url action="update" var="urlUpdate">
+														<s:param name="personne.id">
+															<s:property value="id" />
+														</s:param>
+													</s:url>
+													<button type="button" class="btn btn-warning btn-circle"
+														onclick="location.href='<s:property value="#urlUpdate"/>'">
+														<i class="fa fa-upload"></i>
+													</button>
 												</td>
 											</tr>
 										</s:iterator>

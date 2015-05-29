@@ -52,6 +52,16 @@ public class RegisterAction extends ActionSupport {
 		return SUCCESS;
 
 	}
+	
+	
+	@SkipValidation
+	// ignorer la validation c'est juste de la redirection de page
+	@Action(value = "/update", results = @Result(name = "success", location = "/pages/register.jsp"))
+	public String update() throws InstantiationException, IllegalAccessException, ServiceException {
+		personne = personneService.find(personne);
+		return SUCCESS;
+
+	}
 
 	@Action(value = "registration", results = {
 			@Result(name = "success", location = "/pages/registration-ok.jsp"),

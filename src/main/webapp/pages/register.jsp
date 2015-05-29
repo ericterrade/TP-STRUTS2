@@ -27,6 +27,7 @@
 								<div class="col-lg-6">
 									<s:form action="registration">
 										<%-- 		<s:fielderror/> --%>
+										<s:hidden name="personne.id"/>
 										<div class="form-group">
 											<s:textfield name="personne.nom"
 												label="%{getText('personne.nom.label')}"
