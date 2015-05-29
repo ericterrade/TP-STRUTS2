@@ -1,6 +1,8 @@
 package fr.treeptik.tpstruts.action;
 
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
@@ -23,6 +25,7 @@ public class RegisterAction extends ActionSupport {
 	@Autowired
 	private PersonneService personneService;
 	
+	private List<Personne> personnes;
 	private Personne personne;
 
 	@SkipValidation
@@ -49,6 +52,16 @@ public class RegisterAction extends ActionSupport {
 	// ignorer la validation c'est juste de la redirection de page
 	@Action(value = "/register", results = @Result(name = "success", location = "/pages/register.jsp"))
 	public String register() {
+		return SUCCESS;
+
+	}
+	
+	
+	@SkipValidation
+	// ignorer la validation c'est juste de la redirection de page
+	@Action(value = "/updateList", results = @Result(name = "success", location = "/pages/searchResult.jsp"))
+	public String updateList() throws InstantiationException, IllegalAccessException, ServiceException {
+		setPersonnes(personneService.findAll());
 		return SUCCESS;
 
 	}
@@ -85,6 +98,8 @@ public class RegisterAction extends ActionSupport {
 		return SUCCESS;
 
 	}
+	
+	
 
 	public Personne getPersonne() {
 		return personne;
@@ -92,6 +107,14 @@ public class RegisterAction extends ActionSupport {
 
 	public void setPersonne(Personne personne) {
 		this.personne = personne;
+	}
+
+	public List<Personne> getPersonnes() {
+		return personnes;
+	}
+
+	public void setPersonnes(List<Personne> personnes) {
+		this.personnes = personnes;
 	}
 
 }
