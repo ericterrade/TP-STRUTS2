@@ -25,6 +25,7 @@ public class PersonneService {
 
 	@Transactional
 	public void remove(Personne personne) throws ServiceException {
+		personne = personneDAO.findOne(personne.getId());
 		personneDAO.delete(personne);
 	}
 

@@ -72,7 +72,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					+ personne.getUsername());
 			return SUCCESS;
 		} else {
-			addActionError("Essaye encore!");
+			addActionError(getText("login.error"));
 			return ERROR;
 		}
 

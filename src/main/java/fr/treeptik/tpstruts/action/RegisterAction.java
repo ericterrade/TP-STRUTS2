@@ -10,13 +10,14 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import fr.treeptik.tpstruts.exception.ServiceException;
 import fr.treeptik.tpstruts.model.Personne;
 import fr.treeptik.tpstruts.service.PersonneService;
 
 @Controller
 public class RegisterAction extends ActionSupport {
 	
-	static final Logger logger = Logger.getLogger(RegisterAction.class);
+	//static final Logger logger = Logger.getLogger(RegisterAction.class);
 
 	private static final long serialVersionUID = 1L;
 	@Autowired
@@ -28,6 +29,18 @@ public class RegisterAction extends ActionSupport {
 	// ignorer la validation c'est juste de la redirection de page
 	@Action(value = "/index", results = @Result(name = "success", location = "/pages/index.jsp"))
 	public String getHelloWorldPage() {
+		return SUCCESS;
+
+	}
+	
+	@SkipValidation
+	// ignorer la validation c'est juste de la redirection de page
+	@Action(value = "/remove", results = @Result(name = "success", location = "/pages/list-personne.jsp"))
+	public String remove() throws ServiceException {
+		System.out.println(personne);
+		//System.out.println(id);
+		personneService.remove(personne);
+		addActionMessage("La personne a bien été supprimée !");
 		return SUCCESS;
 
 	}
@@ -50,7 +63,7 @@ public class RegisterAction extends ActionSupport {
 			return ERROR;
 
 		}
-		logger.debug("registration!");
+		//logger.debug("registration!");
 		try {
 			personneService.save(personne);
 			addActionMessage("enregistrement de " + personne.getUsername()
